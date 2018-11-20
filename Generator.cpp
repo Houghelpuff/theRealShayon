@@ -3,7 +3,13 @@
 void Generator::addEdge(std::string w1, std::string w2) {}
 
 void Generator::addVertex(std::string w) {
-  
+  if (!this->findVertex(w)) {
+    vertex v;
+    v.word = w;
+    this->vertices.push_back(v);
+  } else {
+    std::cout << w << " is already a vertex." << std::endl;
+  }
 }
 
 std::string Generator::generateSentence() {}
