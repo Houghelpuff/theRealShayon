@@ -18,8 +18,10 @@ std::string Generator::generateSentence() {
 
 vertex* Generator::findVertex(std::string w) {
   for (vertex v : this->vertices) {
-    if (v.word == w)
-      return &v;
+    if (v.word == w) {
+      vertex* temp = &v;
+      return temp;
+    }
   }
   return nullptr;
 }
