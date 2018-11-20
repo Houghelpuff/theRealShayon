@@ -3,7 +3,7 @@
 void Generator::addEdge(std::string w1, std::string w2) {}
 
 void Generator::addVertex(std::string w) {
-  if (!this->findVertex(w)) {
+  if (!this->isVertex(w)) {
     vertex v;
     v.word = w;
     this->vertices.push_back(v);
