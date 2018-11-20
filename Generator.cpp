@@ -2,7 +2,9 @@
 
 void Generator::addEdge(std::string w1, std::string w2) {}
 
-void Generator::addVertex(std::string w) {}
+void Generator::addVertex(std::string w) {
+  
+}
 
 std::string Generator::generateSentence() {}
 
@@ -20,4 +22,12 @@ bool Generator::isVertex(std::string w) {
 
 bool Generator::isEdge(std::string w1, std::string w2) {
   vertex* temp = this->findVertex(w1);
+  if (temp != nullptr) {
+    for (edge x : temp->edges) {
+      if (x.v->word == w2) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
