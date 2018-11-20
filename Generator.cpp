@@ -7,6 +7,7 @@ void Generator::addVertex(std::string w) {
     vertex v;
     v.word = w;
     this->vertices.push_back(v);
+    std::cout << w << " has been added." << std::endl;
   } else {
     std::cout << w << " is already a vertex." << std::endl;
   }
