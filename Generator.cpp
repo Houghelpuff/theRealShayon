@@ -12,7 +12,9 @@ void Generator::addVertex(std::string w) {
   }
 }
 
-std::string Generator::generateSentence() {}
+std::string Generator::generateSentence() {
+  return "temp";
+}
 
 vertex* Generator::findVertex(std::string w) {
   for (vertex v : this->vertices) {
