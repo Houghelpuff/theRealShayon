@@ -11,7 +11,8 @@ void Generator::addEdge(std::string w1, std::string w2) {
     e.count++;
     temp1->edges.push_back(e);
   } else {
-    std::cout << "Increment count to edge" << std::endl;
+    edge* temp = this->findEdge(w1, w2);
+    temp->count++;
   }
 }
 
