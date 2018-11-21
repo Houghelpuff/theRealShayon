@@ -94,6 +94,20 @@ class Generator {
   vertex* findVertex(std::string);
 
   /*
+  Method: findEdge
+  Return Type: edge*
+  Purpose: This method will check through the edges vector of word 1 to see if
+           there is an edge to word 2.
+  Parameters:
+    - Param1 - std::string -- the first word in the edge
+    - Param2 - std::string -- the second word in edge, the one being pointed to
+  Expected Return:
+    - pointer to edge between words given
+    - nullptr if no edge is found
+   */
+  edge* findEdge(std::string, std::string);
+
+  /*
   Method: isVertex
   Return Type: bool
   Purpose: This method will determine if a given word is already a vertex in the
