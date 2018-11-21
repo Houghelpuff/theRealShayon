@@ -1,6 +1,19 @@
 #include "Generator.hpp"
 
-void Generator::addEdge(std::string w1, std::string w2) {}
+void Generator::addEdge(std::string w1, std::string w2) {
+  if (!this->isEdge(w1, w2)) {
+    this->addVertex(w1);
+    this->addVertex(w2);
+    vertex* temp1 = this->findVertex(w1);
+    vertex* temp2 = this->findVertex(w2);
+    edge e;
+    e.v = temp2;
+    e.count++;
+    temp1->edges.push_back(e);
+  } else {
+    std::cout << "Increment count to edge" << std::endl;
+  }
+}
 
 void Generator::addVertex(std::string w) {
   if (!this->isVertex(w)) {
