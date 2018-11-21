@@ -58,13 +58,5 @@ bool Generator::isVertex(std::string w) {
 }
 
 bool Generator::isEdge(std::string w1, std::string w2) {
-  vertex* temp = this->findVertex(w1);
-  if (temp != nullptr) {
-    for (edge x : temp->edges) {
-      if (x.v->word == w2) {
-        return true;
-      }
-    }
-  }
-  return false;
+  return this->findEdge(w1, w2) != nullptr ? true : false;
 }
