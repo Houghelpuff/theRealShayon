@@ -10,9 +10,11 @@ void Generator::addEdge(std::string w1, std::string w2) {
     e.v = temp2;
     e.count++;
     temp1->edges.push_back(e);
+    std::cout << "Edge " << w1 << " --> " << w2 << " created." << std::endl;
   } else {
     edge* temp = this->findEdge(w1, w2);
     temp->count++;
+    std::cout << "Edge " << w1 << " --> " << w2 << " incremented." << std::endl;
   }
 }
 
