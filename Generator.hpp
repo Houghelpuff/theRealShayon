@@ -13,6 +13,7 @@ Properties:
   - vertex* v -- the vertex of the word following the current word
                 EX: 'my name' name would be pointed to from my)
   - int count -- the amount of times the connected word follows the first word
+  - edge() -- parameterized constructor for edge struct
  */
 struct edge {
   vertex* v;
@@ -26,7 +27,8 @@ the words that have followed it.
 Properties:
   - std::string word -- this is the actual word the defines the vertex
   - std::vector<edge> edges -- this vector holds all the vertices of words that
-                              could follow the current vertex
+                               could follow the current vertex
+  - vertex() -- parameterized constructor for vertex struct
  */
 struct vertex {
   std::string word;
