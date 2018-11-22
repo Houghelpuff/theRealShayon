@@ -17,6 +17,7 @@ Properties:
 struct edge {
   vertex* v;
   int count;
+  edge(vertex* _v, int _count) : v(_v), count(_count) {}
 };
 
 /*
@@ -30,6 +31,7 @@ Properties:
 struct vertex {
   std::string word;
   std::vector<edge> edges;
+  vertex(std::string _word) : word(_word){};
 };
 
 /*
