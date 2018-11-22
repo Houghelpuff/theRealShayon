@@ -31,7 +31,7 @@ Properties:
 struct vertex {
   std::string word;
   std::vector<edge> edges;
-  vertex(std::string _word) : word(_word){};
+  vertex(std::string _word) : word(_word) {}
 };
 
 /*
