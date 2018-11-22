@@ -2,14 +2,13 @@
 
 void Generator::addEdge(std::string w1, std::string w2) {
   if (!this->isEdge(w1, w2)) {
-    this->addVertex(w1);
-    this->addVertex(w2);
+    if (!this->isVertex(w1))
+      this->addVertex(w1);
+    if (!this->isVertex(w2))
+      this->addVertex(w2);
     vertex* temp1 = this->findVertex(w1);
     vertex* temp2 = this->findVertex(w2);
-    edge e;
-    e.v = temp2;
-    e.count++;
-    temp1->edges.push_back(e);
+    temp1->edges.push_back(edge(temp2, 1));
     std::cout << "Edge " << w1 << " --> " << w2 << " created." << std::endl;
   } else {
     edge* temp = this->findEdge(w1, w2);
@@ -20,8 +19,7 @@ void Generator::addEdge(std::string w1, std::string w2) {
 
 void Generator::addVertex(std::string w) {
   if (!this->isVertex(w)) {
-    vertex v;
-    v.word = w;
+    vertex v = vertex(w);
     this->vertices.push_back(v);
     std::cout << w << " has been added." << std::endl;
   } else {
