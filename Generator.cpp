@@ -43,11 +43,12 @@ vertex* Generator::findVertex(std::string w) {
 }
 
 edge* Generator::findEdge(std::string w1, std::string w2) {
-  vertex* temp = this->findVertex(w1);
-  if (temp != nullptr) {
-    for (edge x : temp->edges) {
+  if (this->isVertex(w1) && this->isVertex(w2)) {
+    vertex* temp1 = this->findVertex(w1);
+    vertex* temp2 = this->findVertex(w2);
+    for (edge x : temp1->edges) {
       if (x.v->word == w2) {
-        edge* e = new edge(x.v, x.count);
+        edge* e = new edge(temp2, x.count);
         return e;
       }
     }
@@ -67,11 +68,15 @@ void Generator::test() {
   this->addVertex("hello");
   this->addVertex("world");
   this->addVertex("hello");
+  std::cout << this->isVertex("hello") << std::endl;
   vertex* v = this->findVertex("hello");
   vertex* test = this->findVertex("world");
   std::cout << "Vertex: " << v->word << std::endl;
   edge e = edge(test, 1);
   v->edges.push_back(e);
   edge x = v->edges.back();
+  std::cout << this->isEdge("hello", "world") << std::endl;
   std::cout << "Edge Vertex: " << x.v->word << std::endl;
+  edge* a = this->findEdge("hello", "world");
+  std::cout << "Edge Vertex: " << a->v->word << std::endl;
 }
