@@ -78,6 +78,8 @@ class Generator {
    */
   std::string generateSentence();
 
+  void test();
+
  private:
   /*
   This vector will hold all vertices in the graph
