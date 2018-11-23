@@ -9,11 +9,12 @@ void Generator::addEdge(std::string w1, std::string w2) {
     vertex* temp1 = this->findVertex(w1);
     vertex* temp2 = this->findVertex(w2);
     std::cout << temp1->word << " " << temp2->word << std::endl;
-    std::cout << "Edge " << w1 << " --> " << w2 << " created." << std::endl;
+    std::cout << "Edge - " << w1 << " --> " << w2 << " created." << std::endl;
   } else {
     edge* temp = this->findEdge(w1, w2);
     temp->count++;
-    std::cout << "Edge " << w1 << " --> " << w2 << " incremented." << std::endl;
+    std::cout << "Edge - " << w1 << " --> " << w2 << " incremented."
+              << std::endl;
   }
 }
 
