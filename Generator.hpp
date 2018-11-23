@@ -34,6 +34,8 @@ struct vertex {
   std::string word;
   std::vector<edge> edges;
   vertex(std::string _word) : word(_word) {}
+  vertex(std::string _word, std::vector<edge> _edges)
+      : word(_word), edges(_edges) {}
 };
 
 /*
