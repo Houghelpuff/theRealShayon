@@ -2,8 +2,6 @@
 
 int main() {
   Generator g;
-  g.addVertex("hello");
-  g.addVertex("world");
-  g.addVertex("hello");
+  g.test();
   return 0;
 }

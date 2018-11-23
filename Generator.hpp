@@ -13,10 +13,12 @@ Properties:
   - vertex* v -- the vertex of the word following the current word
                 EX: 'my name' name would be pointed to from my)
   - int count -- the amount of times the connected word follows the first word
+  - edge() -- parameterized constructor for edge struct
  */
 struct edge {
   vertex* v;
   int count;
+  edge(vertex* _v, int _count) : v(_v), count(_count) {}
 };
 
 /*
@@ -25,11 +27,15 @@ the words that have followed it.
 Properties:
   - std::string word -- this is the actual word the defines the vertex
   - std::vector<edge> edges -- this vector holds all the vertices of words that
-                              could follow the current vertex
+                               could follow the current vertex
+  - vertex() -- parameterized constructor for vertex struct
  */
 struct vertex {
   std::string word;
   std::vector<edge> edges;
+  vertex(std::string _word) : word(_word) {}
+  vertex(std::string _word, std::vector<edge> _edges)
+      : word(_word), edges(_edges) {}
 };
 
 /*
@@ -74,6 +80,8 @@ class Generator {
    */
   std::string generateSentence();
 
+  void test();
+
  private:
   /*
   This vector will hold all vertices in the graph
@@ -92,6 +100,20 @@ class Generator {
     - nullptr if vertex is not found
    */
   vertex* findVertex(std::string);
+
+  /*
+  Method: findEdge
+  Return Type: edge*
+  Purpose: This method will check through the edges vector of word 1 to see if
+           there is an edge to word 2.
+  Parameters:
+    - Param1 - std::string -- the first word in the edge
+    - Param2 - std::string -- the second word in edge, the one being pointed to
+  Expected Return:
+    - pointer to edge between words given
+    - nullptr if no edge is found
+   */
+  edge* findEdge(std::string, std::string);
 
   /*
   Method: isVertex

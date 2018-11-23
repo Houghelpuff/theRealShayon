@@ -1,11 +1,25 @@
 #include "Generator.hpp"
 
-void Generator::addEdge(std::string w1, std::string w2) {}
+void Generator::addEdge(std::string w1, std::string w2) {
+  if (!this->isEdge(w1, w2)) {
+    if (!this->isVertex(w1))
+      this->addVertex(w1);
+    if (!this->isVertex(w2))
+      this->addVertex(w2);
+    vertex* temp1 = this->findVertex(w1);
+    vertex* temp2 = this->findVertex(w2);
+    std::cout << temp1->word << " " << temp2->word << std::endl;
+    std::cout << "Edge " << w1 << " --> " << w2 << " created." << std::endl;
+  } else {
+    edge* temp = this->findEdge(w1, w2);
+    temp->count++;
+    std::cout << "Edge " << w1 << " --> " << w2 << " incremented." << std::endl;
+  }
+}
 
 void Generator::addVertex(std::string w) {
   if (!this->isVertex(w)) {
-    vertex v;
-    v.word = w;
+    vertex v = vertex(w);
     this->vertices.push_back(v);
     std::cout << w << " has been added." << std::endl;
   } else {
@@ -18,10 +32,28 @@ std::string Generator::generateSentence() {
 }
 
 vertex* Generator::findVertex(std::string w) {
+  int count = 0;
   for (vertex v : this->vertices) {
     if (v.word == w) {
-      vertex* temp = &v;
-      return temp;
+      return &this->vertices.at(count);
+    }
+    count++;
+  }
+  return nullptr;
+}
+
+edge* Generator::findEdge(std::string w1, std::string w2) {
+  if (this->isVertex(w1) && this->isVertex(w2)) {
+    vertex* temp1 = this->findVertex(w1);
+    vertex* temp2 = this->findVertex(w2);
+    std::cout << "Size: " << temp1->edges.size() << std::endl;
+    int count = 0;
+    for (edge x : temp1->edges) {
+      // std::cout << x.v->word << std::endl;
+      if (x.v == temp2) {
+        return &temp1->edges.at(count);
+      }
+      count++;
     }
   }
   return nullptr;
@@ -32,13 +64,29 @@ bool Generator::isVertex(std::string w) {
 }
 
 bool Generator::isEdge(std::string w1, std::string w2) {
-  vertex* temp = this->findVertex(w1);
-  if (temp != nullptr) {
-    for (edge x : temp->edges) {
-      if (x.v->word == w2) {
-        return true;
-      }
-    }
-  }
-  return false;
+  return this->findEdge(w1, w2) != nullptr ? true : false;
+}
+
+void Generator::test() {
+  this->addVertex("hello");
+  this->addVertex("world");
+  this->addVertex("hello");
+  std::cout << this->isVertex("hello") << std::endl;
+  vertex* v = this->findVertex("hello");
+  vertex* test = this->findVertex("world");
+  std::cout << "Vertex: " << v->word << std::endl;
+  edge e = edge(test, 1);
+  v->edges.push_back(e);
+  std::cout << "Size: " << v->edges.size() << std::endl;
+  vertex* t = this->findVertex("hello");
+  std::cout << "Size: " << t->edges.size() << std::endl;
+  edge x = v->edges.back();
+  std::cout << this->isEdge("hello", "world") << std::endl;
+  std::cout << "Edge Vertex: " << x.v->word << std::endl;
+  edge* a = this->findEdge("hello", "world");
+  std::cout << "Edge Vertex: " << a->v->word << std::endl;
+  this->addEdge("world", "hello");
+  this->addEdge("hello", "world");
+  edge* t_edge = this->findEdge("hello", "world");
+  std::cout << t_edge->count << std::endl;
 }
