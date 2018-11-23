@@ -32,12 +32,12 @@ std::string Generator::generateSentence() {
 }
 
 vertex* Generator::findVertex(std::string w) {
+  int count = 0;
   for (vertex v : this->vertices) {
     if (v.word == w) {
-      vertex* temp = new vertex(v.word);
-      temp->edges = v.edges;
-      return temp;
+      return &this->vertices.at(count);
     }
+    count++;
   }
   return nullptr;
 }
@@ -46,11 +46,14 @@ edge* Generator::findEdge(std::string w1, std::string w2) {
   if (this->isVertex(w1) && this->isVertex(w2)) {
     vertex* temp1 = this->findVertex(w1);
     vertex* temp2 = this->findVertex(w2);
+    std::cout << "Size: " << temp1->edges.size() << std::endl;
+    int count = 0;
     for (edge x : temp1->edges) {
-      if (x.v->word == w2) {
-        edge* e = new edge(temp2, x.count);
-        return e;
+      // std::cout << x.v->word << std::endl;
+      if (x.v == temp2) {
+        return &temp1->edges.at(count);
       }
+      count++;
     }
   }
   return nullptr;
@@ -74,9 +77,16 @@ void Generator::test() {
   std::cout << "Vertex: " << v->word << std::endl;
   edge e = edge(test, 1);
   v->edges.push_back(e);
+  std::cout << "Size: " << v->edges.size() << std::endl;
+  vertex* t = this->findVertex("hello");
+  std::cout << "Size: " << t->edges.size() << std::endl;
   edge x = v->edges.back();
   std::cout << this->isEdge("hello", "world") << std::endl;
   std::cout << "Edge Vertex: " << x.v->word << std::endl;
   edge* a = this->findEdge("hello", "world");
   std::cout << "Edge Vertex: " << a->v->word << std::endl;
+  this->addEdge("world", "hello");
+  this->addEdge("hello", "world");
+  edge* t_edge = this->findEdge("hello", "world");
+  std::cout << t_edge->count << std::endl;
 }
