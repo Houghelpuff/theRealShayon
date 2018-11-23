@@ -68,8 +68,10 @@ void Generator::test() {
   this->addVertex("world");
   this->addVertex("hello");
   vertex* v = this->findVertex("hello");
+  vertex* test = new vertex("test");
   std::cout << "Vertex: " << v->word << std::endl;
-  this->addEdge("hello", "world");
-  edge* e = this->findEdge("hello", "world");
-  std::cout << "Edge Vertex: " << e->v->word << std::endl;
+  edge e = edge(test, 1);
+  v->edges.push_back(e);
+  edge x = v->edges.back();
+  std::cout << "Edge Vertex: " << x.v->word << std::endl;
 }
