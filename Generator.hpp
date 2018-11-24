@@ -14,7 +14,7 @@ Properties:
                 EX: 'my name' name would be pointed to from my)
   - int count -- the amount of times the connected word follows the first word
   - edge() -- parameterized constructor for edge struct
- */
+*/
 struct edge {
   vertex* v;
   int count;
@@ -29,7 +29,7 @@ Properties:
   - std::vector<edge> edges -- this vector holds all the vertices of words that
                                could follow the current vertex
   - vertex() -- parameterized constructor for vertex struct
- */
+*/
 struct vertex {
   std::string word;
   std::vector<edge> edges;
@@ -47,9 +47,13 @@ struct vertex {
         could start sentences will be pointed to from the START. All words that
         could end sentences will point to END. Traversal for sentence creation
         will traverse from START until END.
- */
+*/
 class Generator {
  public:
+  /*
+  Method: Generator
+  Purpose: Constructor for class. Creates start and end vertices.
+   */
   Generator();
 
   /*
@@ -59,7 +63,7 @@ class Generator {
   Parameters:
     - Param1 - std::string -- the word of the vertex to create the edge from
     - Param2 - std::string -- the word of the vertex to create the edge to
-   */
+  */
   void addEdge(std::string, std::string);
 
   /*
@@ -69,8 +73,18 @@ class Generator {
            vertices vector.
   Parameters:
     - Param1 - std::string -- the word value of the vertex being created
-   */
+  */
   void addVertex(std::string);
+
+  /*
+  Method: populate
+  Return Type: void
+  Purpose: This method will take a file name and parse it, creating a vertex for
+           each unique word and edges between words and their following words.
+  Parameters:
+    - Param1 - std::string -- the name of the file to parse
+   */
+  void populate(std::string);
 
   /*
   Method: generateSentence
@@ -79,9 +93,17 @@ class Generator {
     -none
   Expected Return:
     - sentence generated from traversing through the graph from START to END
-   */
+  */
   std::string generateSentence();
 
+  /*
+  Method: test
+  Return Type: void
+  Purpose: This method is used to test all functionality of the class including
+           private methods.
+  Parameters:
+    -none
+   */
   void test();
 
  private:
@@ -102,7 +124,7 @@ class Generator {
   Expected Return:
     - pointer to the vertex of given word if found
     - nullptr if vertex is not found
-   */
+  */
   vertex* findVertex(std::string);
 
   /*
@@ -116,7 +138,7 @@ class Generator {
   Expected Return:
     - pointer to edge between words given
     - nullptr if no edge is found
-   */
+  */
   edge* findEdge(std::string, std::string);
 
   /*
@@ -129,7 +151,7 @@ class Generator {
   Expected Return:
     - true if the word is a vertex stored in the vertices vector
     - false if the word is not a vertex in the vertices vector
-   */
+  */
   bool isVertex(std::string);
 
   /*
@@ -142,7 +164,7 @@ class Generator {
   Expected Return:
     - true if edge exists between word one and word two
     - false if no edge exists between word one and word two
-   */
+  */
   bool isEdge(std::string, std::string);
 };
 
