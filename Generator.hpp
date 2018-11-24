@@ -50,6 +50,8 @@ struct vertex {
  */
 class Generator {
  public:
+  Generator();
+
   /*
   Method: addEdge
   Return Type: void
@@ -83,6 +85,8 @@ class Generator {
   void test();
 
  private:
+  const std::string START_WORD = "@@@@@";
+  const std::string END_WORD = "###";
   /*
   This vector will hold all vertices in the graph
    */
