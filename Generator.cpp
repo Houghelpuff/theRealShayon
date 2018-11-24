@@ -1,5 +1,10 @@
 #include "Generator.hpp"
 
+Generator::Generator() {
+  this->addVertex(this->START_WORD);
+  this->addVertex(this->END_WORD);
+}
+
 void Generator::addEdge(std::string w1, std::string w2) {
   if (!this->isEdge(w1, w2)) {
     if (!this->isVertex(w1))
@@ -66,6 +71,8 @@ bool Generator::isEdge(std::string w1, std::string w2) {
 }
 
 void Generator::test() {
+  this->addVertex(this->START_WORD);
+  this->addVertex(this->END_WORD);
   this->addVertex("hello");
   this->addVertex("world");
   this->addVertex("hello");
