@@ -1,4 +1,6 @@
 #include "Generator.hpp"
+#include <fstream>
+#include <sstream>
 
 Generator::Generator() {
   this->addVertex(this->START_WORD);
@@ -32,6 +34,26 @@ void Generator::addVertex(std::string w) {
   }
 }
 
+void Generator::populate(std::string f) {
+  std::ifstream file(f);
+  if (file.is_open()) {
+    std::string line;
+    while (std::getline(file, line, '\n')) {
+      std::stringstream ss;
+      ss << line;
+      std::string prevWord = this->START_WORD;
+      std::string currWord;
+      while (std::getline(ss, currWord, ' ')) {
+        this->addEdge(prevWord, currWord);
+        prevWord = currWord;
+      }
+      this->addEdge(currWord, this->END_WORD);
+    }
+  } else {
+    std::cout << "ERROR: File " << f << " failed to open." << std::endl;
+  }
+}
+
 std::string Generator::generateSentence() {
   return "temp";
 }
@@ -53,8 +75,8 @@ edge* Generator::findEdge(std::string w1, std::string w2) {
     vertex* temp2 = this->findVertex(w2);
     int count = 0;
     for (edge x : temp1->edges) {
-      if (x.v == temp2) {
-        return &temp1->edges.at(count);
+      if (x.v->word == w2) {
+        return &this->findVertex(w1)->edges.at(count);
       }
       count++;
     }
@@ -71,23 +93,9 @@ bool Generator::isEdge(std::string w1, std::string w2) {
 }
 
 void Generator::test() {
-  this->addVertex(this->START_WORD);
-  this->addVertex(this->END_WORD);
-  this->addVertex("hello");
-  this->addVertex("world");
-  this->addVertex("hello");
-  vertex* v = this->findVertex("hello");
-  vertex* test = this->findVertex("world");
-  std::cout << "Vertex: " << v->word << std::endl;
-  edge e = edge(test, 1);
-  v->edges.push_back(e);
-  vertex* t = this->findVertex("hello");
-  edge x = v->edges.back();
-  std::cout << "Edge Vertex: " << x.v->word << std::endl;
-  edge* a = this->findEdge("hello", "world");
-  std::cout << "Edge Vertex: " << a->v->word << std::endl;
-  this->addEdge("world", "hello");
   this->addEdge("hello", "world");
-  edge* t_edge = this->findEdge("hello", "world");
-  std::cout << "Edge Count: " << t_edge->count << std::endl;
+  std::cout << this->isEdge("hello", "world") << std::endl;
+  std::cout << this->isVertex("hello") << std::endl;
+  edge* e = this->findEdge("hello", "world");
+  std::cout << e->v->word << std::endl;
 }
