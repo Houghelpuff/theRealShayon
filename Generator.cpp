@@ -15,6 +15,8 @@ void Generator::addEdge(std::string w1, std::string w2) {
       this->addVertex(w2);
     vertex* temp1 = this->findVertex(w1);
     vertex* temp2 = this->findVertex(w2);
+    edge e = edge(temp2, 1);
+    temp1->edges.push_back(e);
     std::cout << "Edge - " << w1 << " --> " << w2 << " - created." << std::endl;
   } else {
     edge* temp = this->findEdge(w1, w2);
