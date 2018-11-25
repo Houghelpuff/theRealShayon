@@ -95,9 +95,8 @@ bool Generator::isEdge(std::string w1, std::string w2) {
 }
 
 void Generator::test() {
-  this->addEdge("hello", "world");
-  std::cout << this->isEdge("hello", "world") << std::endl;
-  std::cout << this->isVertex("hello") << std::endl;
-  edge* e = this->findEdge("hello", "world");
-  std::cout << e->v->word << std::endl;
+  vertex* v = this->findVertex(this->START_WORD);
+  std::cout << "Edges Vector Size: " << v->edges.size() << std::endl;
+  for (edge e : v->edges)
+    std::cout << e.v->word << " - " << e.count << std::endl;
 }

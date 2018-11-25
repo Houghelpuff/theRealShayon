@@ -2,9 +2,8 @@
 
 int main() {
   Generator g;
-  // g.test();
-  // g.populate("test.txt");
-  
+  g.populate("test.txt");
+  g.populate("HungerGames.txt");
   g.test();
   return 0;
 }
