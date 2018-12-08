@@ -34,8 +34,6 @@ struct vertex {
   std::string word;
   std::vector<edge> edges;
   vertex(std::string _word) : word(_word) {}
-  vertex(std::string _word, std::vector<edge> _edges)
-      : word(_word), edges(_edges) {}
 };
 
 /*
@@ -112,7 +110,7 @@ class Generator {
   /*
   This vector will hold all vertices in the graph
    */
-  std::vector<vertex> vertices;
+  std::vector<vertex*> vertices;
 
   /*
   Method: findVertex
