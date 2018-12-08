@@ -55,6 +55,17 @@ void Generator::populate(std::string f) {
   }
 }
 
+void Generator::setProbability() {
+  for (vertex* temp : this->vertices) {
+    int prevMax = 0;
+    for (int i = 0; i < temp->edges.size(); i++) {
+      temp->edges[i].min = prevMax;
+      temp->edges[i].max = prevMax + temp->edges[i].count;
+      prevMax = temp->edges[i].max;
+    }
+  }
+}
+
 std::string Generator::generateSentence() {
   return "temp";
 }
@@ -95,7 +106,8 @@ void Generator::test() {
             << std::endl;
   vertex* temp = this->findVertex(this->START_WORD);
   for (int i = 0; i < temp->edges.size(); i++) {
-    std::cout << temp->word << " --> " << temp->edges[i].v->word << " - "
-              << temp->edges[i].count << std::endl;
+    std::cout << temp->word << " --> " << temp->edges[i].v->word
+              << " - Min: " << temp->edges[i].min
+              << " *** Max: " << temp->edges[i].max << std::endl;
   }
 }
