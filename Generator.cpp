@@ -17,12 +17,13 @@ void Generator::addEdge(std::string w1, std::string w2) {
       this->addVertex(w2);
     edge e = edge(this->findVertex(w2), 1);
     this->findVertex(w1)->edges.push_back(e);
-    std::cout << "Edge - " << w1 << " --> " << w2 << " - created." << std::endl;
+    // std::cout << "Edge - " << w1 << " --> " << w2 << " - created." <<
+    // std::endl;
   } else {
     edge* temp = this->findEdge(w1, w2);
     temp->count++;
-    std::cout << "Edge - " << w1 << " --> " << w2 << " - incremented."
-              << std::endl;
+    // std::cout << "Edge - " << w1 << " --> " << w2 << " - incremented."
+    // << std::endl;
   }
 }
 
@@ -30,9 +31,9 @@ void Generator::addVertex(std::string w) {
   if (!this->isVertex(w)) {
     vertex* v = new vertex(w);
     this->vertices.push_back(v);
-    std::cout << w << " has been added." << std::endl;
+    // std::cout << w << " has been added." << std::endl;
   } else {
-    std::cout << w << " is already a vertex." << std::endl;
+    // std::cout << w << " is already a vertex." << std::endl;
   }
 }
 
@@ -46,7 +47,8 @@ void Generator::populate(std::string f) {
       std::string prevWord = this->START_WORD;
       std::string currWord;
       while (std::getline(ss, currWord, ' ')) {
-        std::cout << "Prev: " << prevWord << " Curr: " << currWord << std::endl;
+        // std::cout << "Prev: " << prevWord << " Curr: " << currWord <<
+        // std::endl;
         this->addEdge(prevWord, currWord);
         prevWord = currWord;
       }
