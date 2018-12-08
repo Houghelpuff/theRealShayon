@@ -18,7 +18,12 @@ Properties:
 struct edge {
   vertex* v;
   int count;
-  edge(vertex* _v, int _count) : v(_v), count(_count) {}
+  int min;
+  int max;
+  edge(vertex* _v, int _count) : v(_v), count(_count) {
+    min = -1;
+    max = -1;
+  }
 };
 
 /*
@@ -83,6 +88,17 @@ class Generator {
     - Param1 - std::string -- the name of the file to parse
    */
   void populate(std::string);
+
+  /*
+  Method: setProbability
+  Return Type: void
+  Purpose: This method will set all of the min/max ranges in the edges vector of
+           each vertex. These values will be useful for traversing through the
+           graph to generate a sentence.
+  Parameters:
+    -none
+   */
+  void setProbability();
 
   /*
   Method: generateSentence
