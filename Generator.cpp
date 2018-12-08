@@ -1,4 +1,6 @@
 #include "Generator.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <sstream>
 
@@ -68,6 +70,30 @@ void Generator::setProbability() {
 }
 
 std::string Generator::generateSentence() {
+  srand(time(NULL));
+  vertex* temp = this->findVertex(this->START_WORD);
+  std::vector<std::string> sentence;
+  int r = rand() % temp->maxRange;
+  for (int i = 0; i < temp->edges.size(); i++) {
+    if (r >= temp->edges[i].min && r < temp->edges[i].max) {
+      temp = temp->edges[i].v;
+      break;
+    }
+  }
+
+  while (temp->word != this->END_WORD) {
+    sentence.push_back(temp->word);
+    r = rand() % temp->maxRange;
+    for (int i = 0; i < temp->edges.size(); i++) {
+      if (r >= temp->edges[i].min && r < temp->edges[i].max) {
+        temp = temp->edges[i].v;
+        break;
+      }
+    }
+  }
+  for (std::string s : sentence)
+    std::cout << s << " ";
+  std::cout << std::endl;
   return "temp";
 }
 
