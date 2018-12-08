@@ -91,16 +91,17 @@ std::string Generator::generateSentence() {
       }
     }
   }
+  std::stringstream ss;
   for (std::string s : sentence)
-    std::cout << s << " ";
-  std::cout << std::endl;
+    ss << s << " ";
+  std::string generatedSentence = ss.str();
+  std::cout << generatedSentence << std::endl;
 
   std::ofstream file("output.txt", std::ios::out);
   if (file.is_open()) {
-    for (std::string s : sentence)
-      file << s << " ";
+    file << generatedSentence;
   }
-  return "temp";
+  return generatedSentence;
 }
 
 vertex* Generator::findVertex(std::string w) {
