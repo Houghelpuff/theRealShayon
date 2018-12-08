@@ -37,8 +37,9 @@ Properties:
 */
 struct vertex {
   std::string word;
+  int maxRange;
   std::vector<edge> edges;
-  vertex(std::string _word) : word(_word) {}
+  vertex(std::string _word) : word(_word) { maxRange = -1; }
 };
 
 /*

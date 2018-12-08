@@ -1,4 +1,6 @@
 #include "Generator.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <sstream>
 
@@ -63,11 +65,43 @@ void Generator::setProbability() {
       temp->edges[i].max = prevMax + temp->edges[i].count;
       prevMax = temp->edges[i].max;
     }
+    temp->maxRange = prevMax;
   }
 }
 
 std::string Generator::generateSentence() {
-  return "temp";
+  srand(time(NULL));
+  vertex* temp = this->findVertex(this->START_WORD);
+  std::vector<std::string> sentence;
+  int r = rand() % temp->maxRange;
+  for (int i = 0; i < temp->edges.size(); i++) {
+    if (r >= temp->edges[i].min && r < temp->edges[i].max) {
+      temp = temp->edges[i].v;
+      break;
+    }
+  }
+
+  while (temp->word != this->END_WORD) {
+    sentence.push_back(temp->word);
+    r = rand() % temp->maxRange;
+    for (int i = 0; i < temp->edges.size(); i++) {
+      if (r >= temp->edges[i].min && r < temp->edges[i].max) {
+        temp = temp->edges[i].v;
+        break;
+      }
+    }
+  }
+  std::stringstream ss;
+  for (std::string s : sentence)
+    ss << s << " ";
+  std::string generatedSentence = ss.str();
+  std::cout << generatedSentence << std::endl;
+
+  std::ofstream file("output.txt", std::ios::out);
+  if (file.is_open()) {
+    file << generatedSentence;
+  }
+  return generatedSentence;
 }
 
 vertex* Generator::findVertex(std::string w) {
