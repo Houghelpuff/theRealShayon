@@ -4,7 +4,8 @@ int main() {
   Generator g;
   g.populate("test.txt");
   g.setProbability();
+  std::cout << std::endl;
   g.generateSentence();
-  g.test();
+  // g.test();
   return 0;
 }
