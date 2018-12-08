@@ -63,6 +63,7 @@ void Generator::setProbability() {
       temp->edges[i].max = prevMax + temp->edges[i].count;
       prevMax = temp->edges[i].max;
     }
+    temp->maxRange = prevMax;
   }
 }
 
