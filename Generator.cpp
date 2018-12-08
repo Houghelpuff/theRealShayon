@@ -94,6 +94,12 @@ std::string Generator::generateSentence() {
   for (std::string s : sentence)
     std::cout << s << " ";
   std::cout << std::endl;
+
+  std::ofstream file("output.txt", std::ios::out);
+  if (file.is_open()) {
+    for (std::string s : sentence)
+      file << s << " ";
+  }
   return "temp";
 }
 
