@@ -42,6 +42,6 @@ while (True):
 
     # if not tweet it and wait, else generate a new sentence with no delay
     if (isGoodTweet):
-        # tweet.PostUpdate(generated_sentence)
+        tweet.PostUpdate(generated_sentence)
         print("Tweet Tweeted.")
         time.sleep(delay)
