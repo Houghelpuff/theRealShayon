@@ -2,7 +2,7 @@
 
 int main() {
   Generator g;
-  g.populate("test.txt");
+  g.populate("Shayon.txt");
   g.setProbability();
   // std::cout << std::endl;
   while (g.generateSentence().length() > 280)
