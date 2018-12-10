@@ -1,0 +1,173 @@
+Okay, so we will start one minute early today.
+I'll just make the announcement for the logistics, then we can sort of delve into the recap.
+If you have any problems, like I always say, raise you hand, let me know.
+One of you told me that the projector, there were lights on last day probably that probably interfered with your vision.
+Is the projector clear today?
+I mean the display and the text, is everything perfectly legible?
+Let me sort of make it bigger.
+Is this text size fine?
+Yeah, that's perfect.
+And the next announcement is every friday will be chocolate friday, so you guys can come up and help yourselves there's a few candies up in the front.
+So I'll try to do this every friday.
+And in your recitations hopefully it went well.
+If you could not complete everything in your recitations and could not set up your environment, make full use of the TA office hours, the CA office hours, come down to my office hours and we'll help you set up your environment.
+This recitation it wasn't very strict, you did not have to turn something in.
+But from the next recitation onwards, please  complete your work and show your TA whatever you have done, because the whole idea is, from this course we all want to take somehting out of it, right?
+So we want your concepts to be crystal clear and, sort of, you should be able to apply your concepts.
+So that's very important what you do in the recitations.
+Anytime, just come up and grab some chocolates.
+So, yeah and also, video recording is on, so we are all being recorded now.
+You guys wanted video recordings so we have started it from this lecture onwards.
+So everything that we do will be covered.
+I'll send out a link so that you guys have it.
+Also, last lecture, any other questions?
+Last lecture the last part was not very clear.
+So many of you have the questions, why file stream and why string stream?
+Why do we have to do that?
+So we will just go over that quickly.
+And today we will talk about classes and objects.
+I remember last class we had a question.
+Why classes when structs are perfectly fine?
+So today we will address that as well.
+So we sort of went over the whole thing, but just going through why we need string stream.
+If you see, in this piece of code we are using get line to extract from the file line by line.
+Each of these lines are being fed into a string stream called ss.
+Is ss the short form of string stream?
+No, it's an instance of string stream.
+It's like a variable, think of int x.
+X is a variable of data type x.
+In this case, ss is an instance of string steam.
+So that is why we are using just the variable after that.
+And when we have ss with two alligator brackets and line.
+What that means is the line that we just extracted, right, goes into ss.
+And after that we do all the processing on string stream.
+Think of it this way, right, the file is like the ocean, okay, and then you have a pool which is your program.
+You want to transfer some water from the ocean to the pool.
+You have to sort of carry the water little by littel, bucket by bucket.
+Your string stream serves as the bucket.
+So you sort of take line by line from the file, put it in the string stream, and then process that.
+In this case, like I said last day, the comma was the delimiter, so we are using the comma to sort of seperate chunks of information we need.
+In this case, it was id, student name, and major.
+Yes, so, by default, get line uses the carriage return, or '\n', or new line however you put it, as it's default delimited.
+Okay, any other queries?
+Go ahead.
+So, again, string steam, think of string stream as a, ss as an instance of string stream, and string stream itself as a, so we use many instances, right?
+For instance, cout, we use cin, we use file stream and string stream.
+Things like that are parts of the C++ language, right?
+And that is why we are doing something like hash include sstream or string stream.
+So in this program we are using an instance of string stream.
+Does that make sense?
+Any other queries?
+Okay, lets move on to today's task.
+Alright, welcome to data structures everyone.
+So today before we start, your quiz will be a little bit of a surprise.
+It has double linked lists in it.
+Having said that, we will just test you on the pointer knowledge in it.
+So even before I start, if something says temp is equal to node of previous, that means know that we are just testing your pointer knowledge.
+I just want to do this in class before we start.
+So suppose if we have two nodes like this, and this is just pointer concepts, AB or better yet node A and node B.
+If you have a value called just node, and this is five, this is twenty five, and this is seven.
+And if you do something like...
+I want each of you to go through the quiz slowly and write it out so you understand things properly.
+So if I do something like, node dot previous is equal to A.
+That means this is going to point here, right?
+And then if I do A dot next is equal to node, what did I do?
+I removed this, and I pointed this here.
+Then if I do node dot next is equal to, say B, that means I'm pointing it here.
+And B dot previous is equal to node.
+I point this here.
+Now say this was your tail and this was your head.
+If I asked you to traverse from your tail all the way to your head, what will be the values?
+So if I saw start from tail, what's there in the tail?
+Twenty five, right?
+Now we are traversing backwards, so you go to B dot previous.
+What is B dot previous?
+Seven, right?
+Because we did this, B dot previous is equal to node.
+So that's seven.
+Now if we do node dot previous, what is node dot previous?
+What is node dot previous?
+Five, right?
+So five.
+This is essentially just testing your concepts on pointers more than anything else, you don't have to code double linked lists or anything like that.
+However, it's good to know how pointers work and this is one of the most important places for pointers.
+However, we will not code double linked lists, you don't have to worry about that, but know what double linked lists are.
+We touched that briefly in class.
+I just wanted to test your pointer skills so we decided to give you that.
+But if you have any doubts, you can come and ask me, or you guys can work in groups for this quiz if you want to.
+So it should be easier, but try and pen everything down and experiment before you actually fill any answers for the quiz that's important.
+The quiz is fairly easy, if you spend two to three minutes per question and write it down, you will be through, and you will score full points.
+Okay, so before we start I promised you to bring chocolates today, so here it is.
+During class, after class, whenever you guys want you can come up and grab chocolates, this is for you guys.
+And today, this is the last day we're going to touch stacks and queues.
+I will go over all the implementations.
+Over the weekend I was sort of thinking about how to make this simpiler for you guys since I know this is the first time you are doing data structures, and it's sort of difficult to grasp.
+So, I came up with a few visualizations, rather I did not come up with, I googled proper visualizations, and this was the best visualization I got.
+This is the University of California, San Francisco, they have some of the, I would say some of the best visualizations that are out there.
+And there are other options as well, you can go through them.
+However, I wanted to show you some of the visualizations that I thought would be helpful.
+So we'll look at the visualizations.
+Go through the code.
+However, today I will not be able to walk through the code as deep as I go through because today I am starting trees soon.
+And I'm eating time into the tress just to cover your stacks and queues concepts properly.
+If you have questions I will reserve the last ten minutes of the class for questions.
+So I will start taking questions at one fourty today.
+I will just go over the concept, once again, the code, once again.
+And everything is on moodle.
+And while I'm doing this, today I'll also show you, I'll give this link out to you guys.
+This is the C++ dos and don'ts.
+Many of you were sort of confused about that.
+So I'll show you a few different ways of writting code in C++ today.
+Some of the things you should do and shouldn't do.
+The logic remains the same so I thought, why not, code it out this way so you can see what you should do and shouldn't do.
+But this is a good read, you guys should go through this, and this will make your C++ skills, you know, a little bit stronger.
+Alright welcome to another data structures lecture.
+So today we are going to start with a new data structure called graphs.
+Um we are more or less done with heaps and hash tables.
+In fact, we are running towards the end of the syllabus.
+We'll do graphs for a couple of weeks then we'll have revision.
+I will sort of ask you guys what sort of data structures you want me to revise.
+And what exactly do you want me to revise.
+And then the last three weeks we are going to do advanced data structures.
+So things that are actually cutting edge and are used in the industry.
+And also if you're going for interviews or something like that, with those data structures you're bound to impress your interviewer.
+So before we start today, I'd like to see if you guys had any queries, questions, assignment related problems, logistical problems.
+The computer can flow through this node to another node or come back from the node this one is pointing to here.
+Now you can just have one hand up but now point.
+This is directed graph. 
+So suppose he's pointing to a node which is there.
+What's your value?
+What's your value?
+So four is pointing at twelve.
+Now if you're traversing through the data structure. 
+The computer can traverse from four to twelve but not back. 
+Another analogy think of the freeways.
+If you have a two way freeway right, that means it's a duple mode of communication.
+You can go both ways. 
+However, if you had a one directional road like we are all pointing now, you can only flow from one side to the other.
+Crystal clear everyone?
+You can put your hands down, sorry.
+So we know what vertices are.
+We know what edge and edges are.
+We know what directed and undirected edges are.
+Crystal clear everyone?
+Vertex is a node.
+If you have a connection between them, it is an edge.
+Two vertices, correct?
+A connection between the two vertices is the edge.
+Crystal clear?
+Awesome, now let’s look at more complicated concepts.
+Just two more, two more then I’ll let you guys go. 
+I promise.
+But this is important.
+I will do this in the next class.
+I just want you to get the basic concept.
+Nothing too difficult.
+Basic concept.
+So supposed I take three of them.
+Why don’t you come over you come over.
+And stand like this.
+Graphs can be directed or undirected.
+You see, we’ve already covered this.
+You guys are already one step ahead of the lecture notes.
+
