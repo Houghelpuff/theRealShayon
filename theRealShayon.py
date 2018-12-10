@@ -23,7 +23,7 @@ while (True):
     # run c++ program to get generated sentence
     print("--C++ OUTPUT--")
     subprocess.call("./main")
-    print("--PYTHON SCRIPT--")
+    print("\n--PYTHON SCRIPT--")
 
     # read generated sentence from file
     input_file = open('output.txt', 'r')
@@ -43,5 +43,5 @@ while (True):
     # if not tweet it and wait, else generate a new sentence with no delay
     if (isGoodTweet):
         tweet.PostUpdate(generated_sentence)
-        print("Tweet Tweeted.")
+        print("\nTweet Tweeted.\n")
         time.sleep(delay)
