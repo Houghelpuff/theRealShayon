@@ -2,3 +2,4 @@ main
 .vscode
 credentials.txt
 output.txt
+*.pdf
