@@ -170,4 +170,44 @@ And stand like this.
 Graphs can be directed or undirected.
 You see, we’ve already covered this.
 You guys are already one step ahead of the lecture notes.
-
+Look at this linked list.
+This is a linked list with the numbers you gave.
+All I need to do is create another node and point to it.
+The last pointer points to null.
+Now, suppose this is a linked list and we want to delete this node.
+I want you to see what happens.
+It goes through the entire loop then goes to the next element.
+Is this the element we want?
+No, so it goes to the next element.
+So everything we learn in bits and pieces we will keep building on.
+We will keep learning concepts and not get deep into the code quite yet.
+We could keep a copy of the head so we can traverse again.
+Copy this link and play around with linked lists this weekend.
+This is when we know we have his the condition of empty array, empty queue.
+Now this is a very important concept.
+If we choose minus one as the index, we purposely know that it is empty.
+Is this part crystal clear?
+So this is the circular array implementation.
+I hope this makes the concept crystal clear.
+The first two lines you know.
+Using the const keyword is essentially making it a constant.
+Does anyone have any doubts about this?
+Before we proceed, every data structure can be implemented in different ways for what you need.
+I would just like to get that out of the way before you begin.
+Why do we have it as private?
+We don’t the main elements of a data structure to be vulnerable to any external forces outside of the class.
+If anyone else has to use it, they can use the functions we provide them with. 
+Object oriented principles, crystal clear?
+What is the name of the class?
+We can write this simply using the ternary operator.
+The question mark signifies the end of the condition and the beginning of the values.
+The part before the colon is the answer if it is true and the part after is the value if it is false.
+You will not be doing it in code runner, you will be using the command line.
+It’s not because the data structure is circular itself.
+Do you see the circular nature of the data structure?
+So the only role of this function is to tell you, hey, the data structure is empty, crystal clear?
+Do you know why we are doing that now?
+This is called a ternary operator.
+It’s a shorter syntax to essentially write your if-else statements.
+Now I will try to make your programming skills better and better as we go alone the class.
+Now these simple tricks are going to make you a more proficient programmer than a programmer who is just starting out.
