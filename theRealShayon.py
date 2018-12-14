@@ -27,21 +27,15 @@ while (True):
 
     # read generated sentence from file
     input_file = open('output.txt', 'r')
-    generated_sentence = input_file.read()
+    # generated_sentence = input_file.read()
+    generated_sentence = "And then we'll have some water little by bucket.s"
     print("Tweet: " + generated_sentence)
 
     # check if generated sentence has already been tweeted
-    statuses = tweet.GetUserTimeline(screen_name="theRealShayon")
-    isGoodTweet = False
-    for s in statuses:
-        if (s.text == generated_sentence):
-            print("Tweet has already been tweeted")
-            isGoodTweet = False
-            break
-        isGoodTweet = True
-
-    # if not tweet it and wait, else generate a new sentence with no delay
-    if (isGoodTweet):
+    try:
         tweet.PostUpdate(generated_sentence)
         print("\nTweet Tweeted.\n")
         time.sleep(delay)
+    except twitter.error.TwitterError as err:
+        print(err)
+        print("\nTweet Failed, Generating New Tweet\n")
